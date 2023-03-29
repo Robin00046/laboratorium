@@ -11,16 +11,16 @@
       </li><!-- End Dashboard Nav -->
       <li class="nav-item">
         {{-- <a class="nav-link {{ Request::is('product') ? '' :'collapsed' }}" href="{{ route('product.index') }}"> --}}
-        <a class="nav-link" href="#">
+          <a class="nav-link {{ Request::is('user') ? '' :'collapsed' }}"  href="{{ route('user.index') }}">
           <i class="bi bi-person"></i>
-          <span>Tambah User</span>
+          <span>Data User</span>
         </a>
       </li><!-- End Profile Page Nav -->
       <li class="nav-item">
         {{-- <a class="nav-link {{ Request::is('product') ? '' :'collapsed' }}" href="{{ route('product.index') }}"> --}}
         <a class="nav-link" href="#">
           <i class="bi bi-person"></i>
-          <span>Tambah Pasien</span>
+          <span>Data Pasien</span>
         </a>
       </li><!-- End Profile Page Nav -->
 
