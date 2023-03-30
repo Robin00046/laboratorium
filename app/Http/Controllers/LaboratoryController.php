@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pasien;
-use App\Http\Requests\StorePasienRequest;
-use App\Http\Requests\UpdatePasienRequest;
+use App\Models\Laboratory;
+use App\Http\Requests\StoreLaboratoryRequest;
+use App\Http\Requests\UpdateLaboratoryRequest;
 
-class PasienController extends Controller
+class LaboratoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class PasienController extends Controller
     public function index()
     {
         //
-        $pasien = Pasien::all();
-        return view('admin.pasien.index', compact('pasien'));
+        return view('laboratory.index');
     }
 
     /**
@@ -24,13 +23,13 @@ class PasienController extends Controller
     public function create()
     {
         //
-        return view('admin.pasien.create');
+        return view('laboratory.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePasienRequest $request)
+    public function store(StoreLaboratoryRequest $request)
     {
         //
     }
@@ -38,25 +37,24 @@ class PasienController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pasien $pasien)
+    public function show(Laboratory $laboratory)
     {
         //
-        return view('admin.pasien.detail');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pasien $pasien)
+    public function edit(Laboratory $laboratory)
     {
         //
-        return view('admin.pasien.edit');
+        return view('laboratory.edit');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePasienRequest $request, Pasien $pasien)
+    public function update(UpdateLaboratoryRequest $request, Laboratory $laboratory)
     {
         //
     }
@@ -64,7 +62,7 @@ class PasienController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pasien $pasien)
+    public function destroy(Laboratory $laboratory)
     {
         //
     }
