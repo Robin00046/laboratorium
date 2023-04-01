@@ -3,12 +3,12 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Edit Data User</h1>
+      <h1>Edit Data Pasien</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">User</li>
-          <li class="breadcrumb-item active">Edit Data User</li>
+          <li class="breadcrumb-item active">Pasien</li>
+          <li class="breadcrumb-item active">Edit Data Pasien</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -24,44 +24,62 @@
               <div class="card recent-sales overflow-auto">
 
                 <div class="card-body">
-                  <h5 class="card-title">Edit User</h5>
-                    <a href="{{ route('user.index') }}" class="btn btn-primary btn-sm mb-2">Kembali</a>
-                    <form method="POST" action="{{ route('user.update',$user->id) }}" >
+                  <h5 class="card-title">Edit Pasien</h5>
+                    <a href="{{ route('pasien.index') }}" class="btn btn-primary btn-sm mb-2">Kembali</a>
+                    <form method="POST" action="{{ route('pasien.update',$pasien->id) }}" >
                       @csrf
                       @method('PUT')
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Nama</label>
-                            <input type="text" name="name" id="name" class="form-control"
-                                   id="exampleFormControlInput1" value="{{ $user->name }}"
+                            <input type="text" name="nama" id="nama" class="form-control"
+                                   id="exampleFormControlInput1" value="{{ $pasien->nama }}"
                                    >
-                            @error('name') <span
+                            @error('nama') <span
                                 class="text-danger error">{{ $message }}</span>@enderror
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlInput1">Email</label>
-                            <input type="text" name="email" id="email" class="form-control" id="exampleFormControlInput1"
-                                  value="{{ $user->email }}">
-                            @error('email') 
+                          <label for="exampleFormControlInput1">Jenis Kelamin</label>
+                          <select name="jenis_kelamin" id="jenis_kelamin"class="form-select">
+                              {{-- <option value="{{ $pasien->jenis_kelamin }}">{{ $pasien->jenis_kelamin }}</option> --}}
+                              <option {{ ($pasien->jenis_kelamin == 'L' ? 'selected="selected"' : '') }} value="L">L</option>
+                              <option {{ ($pasien->jenis_kelamin == 'P' ? 'selected="selected"' : '') }} value="P">P</option>
+                          </select>
+                          @error('jenis_kelamin') 
+                          <span class="text-danger error">{{ $message }}</span>@enderror
+                      </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">tanggal_lahir</label>
+                            <input type="tanggal_lahir" name="tanggal_lahir" id="tanggal_lahir" class="form-control" id="exampleFormControlInput1"
+                                   placeholder="Enter tanggal_lahir" value="{{ $pasien->tanggal_lahir }}" >
+                            @error('tanggal_lahir') 
                             <span class="text-danger error">{{ $message }}</span>@enderror
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlInput1">Password</label>
-                            <input type="password" name="password" id="password" class="form-control" id="exampleFormControlInput1"
-                                   placeholder="Enter Password" >
-                            @error('password') 
-                            <span class="text-danger error">{{ $message }}</span>@enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Role</label>
-                              <select class="form-control form-control-sm" name="role" id="role">
-                                @foreach ($roles as $item)
-                                <option {{ ($user->role_id == $item->id ? 'selected="selected"' : '') }} value="{{ $item->name }}">{{ $item->name }}</option>
-                                @endforeach
+                            <label for="exampleFormControlInput1">alamat</label>
+                            <input type="text" name="alamat" id="alamat" class="form-control" id="exampleFormControlInput1"
+                                   placeholder="Enter alamat" value="{{ $pasien->alamat }}" >
                             </select>
-                            @error('role') 
+                            @error('alamat') 
                             <span class="text-danger error">{{ $message }}</span>@enderror
                         </div>
-                        
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">no_hp</label>
+                            <input type="text" name="no_hp" id="no_hp" class="form-control" id="exampleFormControlInput1"
+                                   placeholder="Enter no_hp" value="{{ $pasien->no_hp }}" >
+                            </select>
+                            @error('no_hp') 
+                            <span class="text-danger error">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlInput1">Dokter</label>
+                            <select class="form-select" name="user_id" id="user_id">
+                              @foreach ($dokter as $item)
+                              <option {{ ($pasien->user_id == $item->id ? 'selected="selected"' : '') }} value="{{ $item->id }}">{{ $item->name }}</option>
+                              @endforeach
+                          </select>
+                          @error('user_id') 
+                          <span class="text-danger error">{{ $message }}</span>@enderror
+                        </div>
                         <div class="form-group">
                             <button class="btn btn-primary mt-3">Save</button>
                         </div>

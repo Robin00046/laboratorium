@@ -48,7 +48,7 @@ class UserController extends Controller
         $validate['password'] = Hash::make($request->password);
         $user = User::create($validate);
         $user->assignRole($request->role);
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -102,7 +102,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->update($validate);
         $user->syncRoles($request->role);
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -112,6 +112,6 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('success', 'Data berhasil dihapus');
     }
 }

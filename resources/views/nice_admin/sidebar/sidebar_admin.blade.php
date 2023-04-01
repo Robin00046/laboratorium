@@ -17,8 +17,8 @@
         </a>
       </li><!-- End Profile Page Nav -->
       <li class="nav-item">
-        {{-- <a class="nav-link {{ Request::is('product') ? '' :'collapsed' }}" href="{{ route('product.index') }}"> --}}
-        <a class="nav-link" href="#">
+        <a class="nav-link {{ Request::is('pasien') ? '' :'collapsed' }}" href="{{ route('pasien.index') }}">
+        {{-- <a class="nav-link" href="#"> --}}
           <i class="bi bi-person"></i>
           <span>Data Pasien</span>
         </a>

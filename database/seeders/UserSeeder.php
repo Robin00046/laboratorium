@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
             ] )->assignRole('Admin');
         User::create( [
-            'name' => Str::random(10),
+            'name' => 'Dokter Tirta',
             'email' => Str::random(10).'@gmail.com',
             'password' => Hash::make('password'),
             ] )->assignRole('Dokter');
@@ -29,5 +29,10 @@ class UserSeeder extends Seeder
             'email' => Str::random(10).'@gmail.com',
             'password' => Hash::make('password'),
             ] )->assignRole('Lab');
+        User::create( [
+            'name' => 'Dokter Manusia',
+            'email' => Str::random(10).'@gmail.com',
+            'password' => Hash::make('password'),
+            ] )->assignRole('Dokter');
     }
 }

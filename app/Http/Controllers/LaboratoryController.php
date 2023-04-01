@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Laboratory;
 use App\Http\Requests\StoreLaboratoryRequest;
 use App\Http\Requests\UpdateLaboratoryRequest;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class LaboratoryController extends Controller
 {
@@ -14,7 +16,12 @@ class LaboratoryController extends Controller
     public function index()
     {
         //
-        return view('laboratory.index');
+
+        $lab = Laboratory::join('pasiens', 'pasiens.id', '=', 'laboratories.pasien_id')
+        ->join('diagnosas', 'diagnosas.id', '=', 'laboratories.diagnosa_id')
+            ->get();
+        // dd($lab);
+        return view('laboratory.index', compact('lab'));
     }
 
     /**
@@ -22,16 +29,39 @@ class LaboratoryController extends Controller
      */
     public function create()
     {
-        //
-        return view('laboratory.create');
+        $tes = Laboratory::orderby('id', 'desc')->first()->id;
+        
+        // dd($tes,1));
+        $table_no = $tes; // nantinya menggunakan database dan table sungguhan
+
+        $tgl = 'Reg-';
+        $no= $tgl.$table_no;
+        $auto=substr($no,4);
+        $auto=intval($auto)+1;
+        $value=substr($no,0,4).str_repeat(0,(6-strlen($auto))).$auto;
+    //    dd($auto_number); 
+        // dd(Laboratory::latest()->first()->id);
+        return view('laboratory.create', compact('value'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreLaboratoryRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'no_lab' => 'required',
+            'id_pasien' => 'required',
+            'id_dokter' => 'required',
+            'lab_id' => 'required',
+            'tanggal' => 'required',
+            'hasil_lab' => 'required',
+            'keterangan' => 'required',
+        ]);
+        $validated['status'] = 1;
+        $validated = $request->all();
+        Laboratory::create($validated);
+        return redirect()->route('laboratory.index');
     }
 
     /**
@@ -54,7 +84,7 @@ class LaboratoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateLaboratoryRequest $request, Laboratory $laboratory)
+    public function update(Request $request, Laboratory $laboratory)
     {
         //
     }

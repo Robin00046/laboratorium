@@ -53,7 +53,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Role</label>
-                              <select class="form-control form-control-sm" name="role" id="role">
+                              <select class="form-select" name="role" id="role">
                                 @foreach ($roles as $item)
                                 <option {{ ($user->role_id == $item->id ? 'selected="selected"' : '') }} value="{{ $item->name }}">{{ $item->name }}</option>
                                 @endforeach
@@ -61,6 +61,7 @@
                             @error('role') 
                             <span class="text-danger error">{{ $message }}</span>@enderror
                         </div>
+                        
                         
                         <div class="form-group">
                             <button class="btn btn-primary mt-3">Save</button>

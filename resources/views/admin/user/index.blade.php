@@ -11,7 +11,12 @@
         </ol>
       </nav>
     </div><!-- End Page Title -->
-
+    @if (session()->has('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success')}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
     <section class="section dashboard">
       {{-- <div class="row"> --}}
 
@@ -36,26 +41,28 @@
                       </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $item)
-                            <tr>
-                        <th scope="row"><a href="#">{{ $loop->iteration }}</a></th>
-                        <td>{{ $item->name }}</td>
-                        <td>{{ $item->email }}</td>
-                        <td>{{ $item->role }}</td>
-                        <td>
-                            <a href="{{ route('user.edit',$item->id) }}"><span class="badge bg-warning">Edit</span></a>
-                            <form action="{{ route('user.destroy',$item->id) }}" method="POST" onclick="return confirm('Are you sure?')">
-                                @method('DELETE')
-                                @csrf
-                                <button class="badge bg-danger" >
-                                    Hapus
-                                </button>          
-                               </form>
-                        </td>
-                      </tr>
-                        @endforeach
-                      
-                      
+                      @forelse ($lab as $item)
+                      <tr>
+                          <th scope="row"><a href="#">{{ $loop->iteration }}</a></th>
+                          <td>{{ $item->name }}</td>
+                          <td>{{ $item->email }}</td>
+                          <td>{{ $item->role }}</td>
+                          <td>
+                              <a href="{{ route('user.edit',$item->id) }}"><span class="badge bg-warning">Edit</span></a>
+                              <form action="{{ route('user.destroy',$item->id) }}" method="POST" onclick="return confirm('Are you sure?')">
+                                  @method('DELETE')
+                                  @csrf
+                                  <button class="badge bg-danger" >
+                                      Hapus
+                                  </button>          
+                                 </form>
+                          </td>
+                        </tr>
+                      @empty
+                          <tr>
+                              <td colspan="5" class="text-center">Data Kosong</td>
+                          </tr>
+                      @endforelse
                     </tbody>
                   </table>
 

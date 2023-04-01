@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('laboratories', function (Blueprint $table) {
             $table->id();
+            $table->string('no_lab');
+            $table->foreignId('pasien_id');
+            $table->foreignId('dokter_id');
+            $table->foreignId('diagnosa_id');
+            $table->date('tanggal');
+            $table->string('hasil')->nullable();
+            $table->string('keterangan')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

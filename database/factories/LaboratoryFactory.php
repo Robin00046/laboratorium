@@ -18,6 +18,13 @@ class LaboratoryFactory extends Factory
     {
         return [
             //
+            'no_lab' => $this->faker->randomNumber(5),
+            'pasien_id' => $this->faker->randomElement(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']),
+            'dokter_id' => $this->faker->randomElement(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']),
+            'diagnosa_id' => $this->faker->randomElement(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']),
+            'tanggal' => $this->faker->date(),
+            'hasil' => $this->faker->text,
+            'keterangan' => $this->faker->text,
         ];
     }
 }

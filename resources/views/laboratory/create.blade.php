@@ -29,10 +29,9 @@
                     <form method="POST" action="{{ route('user.store') }}" >
                       @csrf
                       <div class="form-group">
-                          <label for="exampleFormControlInput1">Nama</label>
+                          <label for="exampleFormControlInput1">No Registrasi</label>
                           <input type="text" name="name" id="name" class="form-control"
-                                 id="exampleFormControlInput1" placeholder="Enter Nama"
-                                 >
+                                 id="exampleFormControlInput1" value="{{ $value }}" readonly>
                           @error('name') <span
                               class="text-danger error">{{ $message }}</span>@enderror
                       </div>
@@ -48,17 +47,6 @@
                           <input type="password" name="password" id="password" class="form-control" id="exampleFormControlInput1"
                                  placeholder="Enter Password" >
                           @error('password') 
-                          <span class="text-danger error">{{ $message }}</span>@enderror
-                      </div>
-                      <div class="form-group">
-                          <label for="exampleFormControlInput1">Role</label>
-                            <select class="form-control form-control-sm" name="role" id="role">
-                              <option value="" selected>Pilih Role</option>
-                              @foreach ($roles as $item)
-                                  <option value="{{ $item->id }}">{{ $item->name }}</option>
-                              @endforeach
-                          </select>
-                          @error('role') 
                           <span class="text-danger error">{{ $message }}</span>@enderror
                       </div>
                       

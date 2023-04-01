@@ -18,6 +18,13 @@ class PasienFactory extends Factory
     {
         return [
             //
+            'user_id' => $this->faker->randomElement(['2', '4']),
+            'nama' => $this->faker->name,
+            'alamat' => $this->faker->address,
+            'jenis_kelamin' => $this->faker->randomElement(['L', 'P']),
+            'tanggal_lahir' => $this->faker->date(),
+            'no_hp' => $this->faker->phoneNumber,
+
         ];
     }
 }
