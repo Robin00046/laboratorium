@@ -29,14 +29,17 @@
 
                 <div class="card-body">
                   <h5 class="card-title">Data Laboratory </h5>
+                  @role('Dokter')
                     <a href="{{ route('laboratory.create') }}" class="btn btn-primary btn-sm mb-2">Tambah Laboratory</a>
+                    @endrole
                   <table class="table table-borderless datatable">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
+                        <th scope="col">Nomor Pendaftaran</th>
+                        <th scope="col">Nama Pasien</th>
+                        <th scope="col">Tes</th>
+                        <th scope="col">Tanggal</th>
                         <th scope="col">Aksi</th>
                       </tr>
                     </thead>
@@ -44,9 +47,11 @@
                         @forelse ($lab as $item)
                         <tr>
                             <th scope="row"><a href="#">{{ $loop->iteration }}</a></th>
-                            <td>{{ $item->name }}</td>
-                            <td>{{ $item->email }}</td>
-                            <td>{{ $item->role }}</td>
+                            <td>{{ $item->no_lab }}</td>
+                            <td>{{ $item->pasien }}</td>
+                            <td>{{ $item->diagnosa }}</td>
+                            <td>{{ $item->tanggal }}</td>
+                            @role('Dokter')
                             <td>
                                 <a href="{{ route('laboratory.edit',$item->id) }}"><span class="badge bg-warning">Edit</span></a>
                                 <form action="{{ route('laboratory.destroy',$item->id) }}" method="POST" onclick="return confirm('Are you sure?')">
@@ -57,6 +62,13 @@
                                     </button>          
                                    </form>
                             </td>
+                            @endrole
+                            @role('Lab')
+                            <td>
+                                <span class="badge bg-warning">Detail</span>
+                            </td>
+                            @endrole
+
                           </tr>
                         @empty
                             <tr>
