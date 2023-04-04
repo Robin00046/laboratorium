@@ -23,8 +23,8 @@
         </a>
       </li><!-- End Profile Page Nav -->
       <li class="nav-item">
-        <a class="nav-link"  href="#">
-        {{-- <a class="nav-link {{ Request::is('dashboard') ? '' :'collapsed' }}"  href="{{ route('dashboard') }}"> --}}
+        {{-- <a class="nav-link"  href="#"> --}}
+        <a class="nav-link {{ Request::is('laboratory.hasil') ? '' :'collapsed' }}"  href="{{ route('laboratory.hasil') }}">
           <i class="bi bi-person"></i>
           <span>Hasil</span>
         </a>

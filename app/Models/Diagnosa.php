@@ -10,5 +10,10 @@ class Diagnosa extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
+    public function laboratory()
+    {
+        return $this->hasMany(Laboratory::class);
+    }
+    
 
 }

@@ -41,7 +41,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      @forelse ($lab as $item)
+                      @forelse ($users as $item)
                       <tr>
                           <th scope="row"><a href="#">{{ $loop->iteration }}</a></th>
                           <td>{{ $item->name }}</td>
