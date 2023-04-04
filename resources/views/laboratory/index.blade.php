@@ -44,8 +44,8 @@
                         @forelse ($lab as $item)
                         <tr>
                             <th scope="row"><a href="#">{{ $loop->iteration }}</a></th>
-                            <td>{{ $item->name }}</td>
-                            <td>{{ $item->email }}</td>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->no_lab }}</td>
                             <td>{{ $item->role }}</td>
                             <td>
                                 <a href="{{ route('laboratory.edit',$item->id) }}"><span class="badge bg-warning">Edit</span></a>

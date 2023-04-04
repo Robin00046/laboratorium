@@ -3,12 +3,12 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Tambah Data User</h1>
+      <h1>Tambah Data Laboratory</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Data User</li>
-          <li class="breadcrumb-item active">Tambah Data User</li>
+          <li class="breadcrumb-item active">Data Laboratory</li>
+          <li class="breadcrumb-item active">Tambah Data Laboratory</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -24,9 +24,9 @@
               <div class="card recent-sales overflow-auto">
 
                 <div class="card-body">
-                  <h5 class="card-title">Tambah User</h5>
-                    <a href="{{ route('user.index') }}" class="btn btn-primary btn-sm mb-2">Kembali</a>
-                    <form method="POST" action="{{ route('user.store') }}" >
+                  <h5 class="card-title">Tambah Laboratory</h5>
+                    <a href="{{ route('laboratory.index') }}" class="btn btn-primary btn-sm mb-2">Kembali</a>
+                    <form method="POST" action="{{ route('laboratory.store') }}" >
                       @csrf
                       <div class="form-group">
                           <label for="exampleFormControlInput1">No Registrasi</label>

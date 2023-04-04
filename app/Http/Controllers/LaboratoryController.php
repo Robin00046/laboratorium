@@ -19,6 +19,7 @@ class LaboratoryController extends Controller
 
         $lab = Laboratory::join('pasiens', 'pasiens.id', '=', 'laboratories.pasien_id')
         ->join('diagnosas', 'diagnosas.id', '=', 'laboratories.diagnosa_id')
+        ->select('laboratories.*', 'diagnosas.nama', 'pasiens.nama')
             ->get();
         // dd($lab);
         return view('laboratory.index', compact('lab'));
