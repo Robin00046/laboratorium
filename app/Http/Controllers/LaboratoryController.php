@@ -81,7 +81,7 @@ class LaboratoryController extends Controller
         // dd($validated);
         
         Laboratory::create($validated);
-        return redirect()->route('laboratory.index');
+        return redirect()->route('laboratory.index')->with('success', 'Data berhasil di input');
     }
 
     /**
@@ -115,8 +115,54 @@ class LaboratoryController extends Controller
     public function update(Request $request, Laboratory $laboratory)
     {
         //
+        // dd($laboratory);
+        $validated = $request->validate([
+            'no_lab' => 'required',
+            'pasien_id' => 'required',
+            'diagnosa_id' => 'required',
+            'tanggal' => 'required',
+        ]);
+        $validated['dokter_id'] = Auth::user()->id;
+        $validated['status'] = 1;
+        $laboratory->update($validated);
+        return redirect()->route('laboratory.index')->with('success', 'Data Berhasil di Update');
     }
 
+    public function update_hasil(Request $request, Laboratory $laboratory)
+    {
+        // dd($laboratory);
+        $validated = $request->validate([
+            'hasil' => 'required',
+        ]);
+        $validated['status'] = 2;
+        // dd($validated);
+        
+        $laboratory->update($validated);
+        return redirect()->route('laboratory.index')->with('success', 'Hasil berhasil di input');
+    }
+
+    // hasil
+    public function hasil()
+    {
+        //
+        if (auth()->user()->hasRole('Dokter')) {
+            $lab = Laboratory::join('pasiens', 'pasiens.id', '=', 'laboratories.pasien_id')
+        ->join('diagnosas', 'diagnosas.id', '=', 'laboratories.diagnosa_id')
+        ->select('laboratories.*', 'pasiens.nama as pasien', 'diagnosas.nama as diagnosa')
+        ->where('status', '=', 2)
+        ->where('user_id', '=', Auth::user()->id)
+        ->get();
+        } elseif (auth()->user()->hasRole('Lab')) {
+            $lab = Laboratory::join('pasiens', 'pasiens.id', '=', 'laboratories.pasien_id')
+        ->join('diagnosas', 'diagnosas.id', '=', 'laboratories.diagnosa_id')
+        ->select('laboratories.*', 'pasiens.nama as pasien', 'diagnosas.nama as diagnosa')
+        ->where('status', '=', 2)
+        ->get();
+        }
+        
+        // dd($lab);
+        return view('laboratory.hasil', compact('lab'));
+    }
     /**
      * Remove the specified resource from storage.
      */

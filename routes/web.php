@@ -30,6 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('user', UserController::class)->name('user', 'users')->except(['show'])->middleware('role:Admin');
     Route::resource('pasien', PasienController::class)->name('pasien', 'pasiens')->except(['show']);
     Route::resource('laboratory', LaboratoryController::class)->name('laboratory', 'laboratories')->except(['show']);
+    Route::put('hasil/{laboratory}', [LaboratoryController::class, 'update_hasil'])->name('hasil.update_hasil');
+    Route::get('hasil', [LaboratoryController::class, 'hasil'])->name('laboratory.hasil');
     Route::get('getdiagnosa/{id}', function ($id) {
         $diagnosa = Diagnosa::where('id_jenis',$id)->get();
         // dd($diagnosa);

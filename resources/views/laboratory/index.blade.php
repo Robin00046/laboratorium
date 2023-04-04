@@ -65,8 +65,10 @@
                             @endrole
                             @role('Lab')
                             <td>
-                                <span class="badge bg-warning">Detail</span>
-                            </td>
+                              <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modaledit{{ $item->id }}">
+                                Input Modal
+                              </button>
+                          </td>
                             @endrole
 
                           </tr>
@@ -91,6 +93,39 @@
       {{-- </div> --}}
       
     </section>
-
+    @foreach ($lab as $item)
+        @php
+            $id = $item->id
+        @endphp
+    <div class="modal fade" id="modaledit{{$id}}" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Basic Modal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form  action="{{ route('hasil.update_hasil',$item->id) }}"
+                              method="post">
+                              @csrf
+                            @method('PUT')
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Input Hasil</label>
+                                <input class="form-control" min="0" max="100" type="number" name="hasil" id="hasil">
+                                @error('hasil')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-primary">Save changes</button>
+                            </div> 
+                </form>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        @endforeach
   </main><!-- End #main -->
 @endsection

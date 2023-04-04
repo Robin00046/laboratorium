@@ -57,8 +57,6 @@
                           <option {{ ($laboratory->diagnosa->id_jenis == $item->id ? 'selected="selected"' : '') }} value="{{ $item->id }}">{{ $item->nama }}</option>
                           @endforeach
                         </select>
-                        {{-- @error('') 
-                        <span class="text-danger error">{{ $message }}</span>@enderror --}}
                       </div>
                       <div class="mb-3">
                         <label for="Diagnosa" class="form-label">Diagnosa</label>
