@@ -1,11 +1,13 @@
 <?php
 
+use App\Models\Diagnosa;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DiagnosaController;
+use App\Http\Controllers\JenisTesController;
 use App\Http\Controllers\LaboratoryController;
-use App\Models\Diagnosa;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('user', UserController::class)->name('user', 'users')->except(['show'])->middleware('role:Admin');
     Route::resource('pasien', PasienController::class)->name('pasien', 'pasiens')->except(['show']);
     Route::resource('laboratory', LaboratoryController::class)->name('laboratory', 'laboratories')->except(['show']);
+    Route::resource('diagnosa', DiagnosaController::class)->name('diagnosa', 'diagnosas')->except(['show']);
+    Route::resource('jenis', JenisTesController::class)->name('jenis', 'jenis')->except(['show'])->parameters(['jenis' => 'jenis']);
     Route::put('hasil/{laboratory}', [LaboratoryController::class, 'update_hasil'])->name('hasil.update_hasil');
     Route::get('hasil', [LaboratoryController::class, 'hasil'])->name('laboratory.hasil');
     Route::get('getdiagnosa/{id}', function ($id) {

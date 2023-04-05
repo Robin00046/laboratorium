@@ -23,6 +23,20 @@
           <span>Data Pasien</span>
         </a>
       </li><!-- End Profile Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('jenis') ? '' :'collapsed' }}" href="{{ route('jenis.index') }}">
+        {{-- <a class="nav-link" href="#"> --}}
+          <i class="bi bi-person"></i>
+          <span>Data Jenis</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('diagnosa') ? '' :'collapsed' }}" href="{{ route('diagnosa.index') }}">
+        {{-- <a class="nav-link" href="#"> --}}
+          <i class="bi bi-person"></i>
+          <span>Data Diagnosa</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
 
     </ul>
 

@@ -11,7 +11,7 @@ class UpdateDiagnosaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,9 @@ class UpdateDiagnosaRequest extends FormRequest
     {
         return [
             //
+            'nama' => 'required',
+            'id_jenis' => 'required',
+            'keterangan' => 'required',
         ];
     }
 }

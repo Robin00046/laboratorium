@@ -11,7 +11,7 @@ class UpdateJenis_TesRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,8 @@ class UpdateJenis_TesRequest extends FormRequest
     {
         return [
             //
+            'nama' => 'required',
+            'keterangan' => 'required',
         ];
     }
 }

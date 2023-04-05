@@ -14,6 +14,10 @@ class Diagnosa extends Model
     {
         return $this->hasMany(Laboratory::class);
     }
-    
 
+    public function jenis_tes()
+    {
+        return $this->belongsTo(Jenis_Tes::class, 'id_jenis');
+    }
+    
 }

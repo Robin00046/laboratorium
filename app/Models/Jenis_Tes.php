@@ -9,4 +9,9 @@ class Jenis_Tes extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function diagnosa()
+    {
+        return $this->hasMany(Diagnosa::class);
+    }
 }

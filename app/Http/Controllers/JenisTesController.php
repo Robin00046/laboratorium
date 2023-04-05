@@ -14,6 +14,8 @@ class JenisTesController extends Controller
     public function index()
     {
         //
+        $jenis = Jenis_Tes::all();
+        return view('admin.jenis_tes.index', compact('jenis'));
     }
 
     /**
@@ -22,6 +24,7 @@ class JenisTesController extends Controller
     public function create()
     {
         //
+        return view('admin.jenis_tes.create');
     }
 
     /**
@@ -30,6 +33,8 @@ class JenisTesController extends Controller
     public function store(StoreJenis_TesRequest $request)
     {
         //
+        Jenis_Tes::create($request->all());
+        return redirect()->route('jenis.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -43,24 +48,30 @@ class JenisTesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Jenis_Tes $jenis_Tes)
+    public function edit(Jenis_Tes $jenis)
     {
         //
+        return view('admin.jenis_tes.edit', compact('jenis'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateJenis_TesRequest $request, Jenis_Tes $jenis_Tes)
+    public function update(UpdateJenis_TesRequest $request, Jenis_Tes $jenis)
     {
-        //
+        
+            $jenis->update($request->all());
+            return redirect()->route('jenis.index')->with('success', 'Data berhasil diubah');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Jenis_Tes $jenis_Tes)
+    public function destroy(Jenis_Tes $jenis)
     {
         //
+        $jenis->delete();
+        return redirect()->route('jenis.index')->with('success', 'Data berhasil dihapus');
     }
 }

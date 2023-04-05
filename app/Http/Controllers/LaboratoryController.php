@@ -169,5 +169,7 @@ class LaboratoryController extends Controller
     public function destroy(Laboratory $laboratory)
     {
         //
+        $laboratory->delete();
+        return redirect()->route('laboratory.index')->with('success', 'Data Berhasil di Hapus');
     }
 }
