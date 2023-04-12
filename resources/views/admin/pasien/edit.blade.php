@@ -25,63 +25,77 @@
 
                 <div class="card-body">
                   <h5 class="card-title">Edit Pasien</h5>
-                    <a href="{{ route('pasien.index') }}" class="btn btn-primary btn-sm mb-2">Kembali</a>
-                    <form method="POST" action="{{ route('pasien.update',$pasien->id) }}" >
+                    <form class="row g-3" method="POST" action="{{ route('pasien.update',$pasien->id) }}" >
                       @csrf
                       @method('PUT')
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Nama</label>
+                        <div class="col-md-12">
+                          <div class="form-floating">
                             <input type="text" name="nama" id="nama" class="form-control"
-                                   id="exampleFormControlInput1" value="{{ $pasien->nama }}"
-                                   >
+                            value="{{ $pasien->nama }}"
+                            >
+                            <label for="nama">Nama</label>
                             @error('nama') <span
                                 class="text-danger error">{{ $message }}</span>@enderror
+                          </div>
                         </div>
-                        <div class="form-group">
-                          <label for="exampleFormControlInput1">Jenis Kelamin</label>
-                          <select name="jenis_kelamin" id="jenis_kelamin"class="form-select">
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                            <select name="jenis_kelamin" id="jenis_kelamin"class="form-select">
                               {{-- <option value="{{ $pasien->jenis_kelamin }}">{{ $pasien->jenis_kelamin }}</option> --}}
                               <option {{ ($pasien->jenis_kelamin == 'L' ? 'selected="selected"' : '') }} value="L">L</option>
                               <option {{ ($pasien->jenis_kelamin == 'P' ? 'selected="selected"' : '') }} value="P">P</option>
-                          </select>
+                            </select>
+                            <label for="jenis_kelamin">Jenis Kelamin</label>
                           @error('jenis_kelamin') 
                           <span class="text-danger error">{{ $message }}</span>@enderror
+                        </div>
                       </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">tanggal_lahir</label>
-                            <input type="tanggal_lahir" name="tanggal_lahir" id="tanggal_lahir" class="form-control" id="exampleFormControlInput1"
-                                   placeholder="Enter tanggal_lahir" value="{{ $pasien->tanggal_lahir }}" >
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                            <input type="tanggal_lahir" name="tanggal_lahir" id="tanggal_lahir" class="form-control" 
+                            placeholder="Enter tanggal_lahir" value="{{ $pasien->tanggal_lahir }}" >
+                            <label for="tanggal_lahir">Tanggal Lahir</label>
                             @error('tanggal_lahir') 
                             <span class="text-danger error">{{ $message }}</span>@enderror
+                          </div>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">alamat</label>
-                            <input type="text" name="alamat" id="alamat" class="form-control" id="exampleFormControlInput1"
-                                   placeholder="Enter alamat" value="{{ $pasien->alamat }}" >
-                            </select>
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                            <input type="text" name="alamat" id="alamat" class="form-control" 
+                            placeholder="Enter alamat" value="{{ $pasien->alamat }}" >
+                          </select>
+                          <label for="alamat">Alamat</label>
                             @error('alamat') 
                             <span class="text-danger error">{{ $message }}</span>@enderror
+                          </div>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">no_hp</label>
-                            <input type="text" name="no_hp" id="no_hp" class="form-control" id="exampleFormControlInput1"
-                                   placeholder="Enter no_hp" value="{{ $pasien->no_hp }}" >
-                            </select>
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                            <input type="text" name="no_hp" id="no_hp" class="form-control" 
+                            placeholder="Enter no_hp" value="{{ $pasien->no_hp }}" >
+                            <label for="no_hp">Nomor Handphone</label>
                             @error('no_hp') 
                             <span class="text-danger error">{{ $message }}</span>@enderror
+                          </div>
                         </div>
-                        <div class="form-group">
-                          <label for="exampleFormControlInput1">Dokter</label>
+                        <div class="col-md-12">
+                          <div class="form-floating">
                             <select class="form-select" name="user_id" id="user_id">
                               @foreach ($dokter as $item)
                               <option {{ ($pasien->user_id == $item->id ? 'selected="selected"' : '') }} value="{{ $item->id }}">{{ $item->name }}</option>
                               @endforeach
-                          </select>
+                            </select>
+                            <label for="user_id">Dokter</label>
                           @error('user_id') 
                           <span class="text-danger error">{{ $message }}</span>@enderror
+                          </div>
                         </div>
-                        <div class="form-group">
-                            <button class="btn btn-primary mt-3">Save</button>
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                            <button class="btn btn-primary">Save</button>
+                            <a href="{{ route('pasien.index') }}" class="btn btn-primary">Kembali</a>
+
+                          </div>
                         </div>
   
                     </form>

@@ -3,11 +3,11 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Daftar Laboratory</h1>
+      <h1>Hasil Laboratory</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Daftar Laboratory</li>
+          <li class="breadcrumb-item active">Hasil Laboratory</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -28,30 +28,27 @@
               <div class="card recent-sales overflow-auto">
 
                 <div class="card-body">
-                  <h5 class="card-title">Data Laboratory </h5>
-                  @role('Dokter')
-                    <a href="{{ route('laboratory.create') }}" class="btn btn-primary btn-sm mb-2">Tambah Laboratory</a>
-                    @endrole
+                  <h5 class="card-title">Hasil Laboratory </h5>
                   <table class="table table-borderless datatable">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nomor Pendaftaran</th>
-                        <th scope="col">Nama Pasien</th>
-                        <th scope="col">Tes</th>
-                        <th scope="col">Tanggal</th>
-                        <th scope="col">Hasil</th>
+                        <th scope="col" class="text-center">#</th>
+                        <th scope="col" class="text-center">Nomor Pendaftaran</th>
+                        <th scope="col" class="text-center">Nama Pasien</th>
+                        <th scope="col" class="text-center">Tes</th>
+                        <th scope="col" class="text-center">Tanggal</th>
+                        <th scope="col" class="text-center">Hasil</th>
                       </tr>
                     </thead>
                     <tbody>
                         @forelse ($lab as $item)
                         <tr>
-                            <th scope="row"><a href="#">{{ $loop->iteration }}</a></th>
-                            <td>{{ $item->no_lab }}</td>
-                            <td>{{ $item->pasien }}</td>
-                            <td>{{ $item->diagnosa }}</td>
-                            <td>{{ $item->tanggal }}</td>
-                            <td>{{ $item->hasil }}</td>
+                            <th scope="row" class="text-center"><a href="#">{{ $loop->iteration }}</a></th>
+                            <td class="text-center">{{ $item->no_lab }}</td>
+                            <td class="text-center">{{ $item->pasien }}</td>
+                            <td class="text-center">{{ $item->diagnosa }}</td>
+                            <td class="text-center">{{ $item->tanggal }}</td>
+                            <td class="text-center">{{ $item->hasil }}</td>
                             
 
                           </tr>

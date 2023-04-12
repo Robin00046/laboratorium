@@ -25,62 +25,97 @@
 
                 <div class="card-body">
                   <h5 class="card-title">Edit Laboratory</h5>
-                    <a href="{{ route('laboratory.index') }}" class="btn btn-primary btn-sm mb-2">Kembali</a>
-                    <form method="POST" action="{{ route('laboratory.update',$laboratory->id) }}" >
+                    <form method="POST" class="row g-3" action="{{ route('laboratory.update',$laboratory->id) }}" >
                       @csrf
                       @method('PUT')
-                      <div class="form-group">
-                          <label for="exampleFormControlInput1">No Registrasi</label>
-                          <input type="text" name="no_lab" id="no_lab" class="form-control"
-                                 id="exampleFormControlInput1" value="{{ $laboratory->no_lab }}" readonly>
+                      <div class="col-md-12">
+                        <div class="form-floating">
+                        <input type="text" name="no_lab" id="no_lab" class="form-control" value="{{ $laboratory->no_lab }}" readonly>
+                        <label for="no_lab">No Registrasi</label>
                           @error('no_lab') <span
                               class="text-danger error">{{ $message }}</span>@enderror
+                        </div>
                       </div>
                       
-                      <div class="form-group">
-                          <label for="exampleFormControlInput1">Pasien</label>
-                          <select class="form-select" name="pasien_id" id="pasien_id">
-                            
-                            <option value="" selected>Pilih Pasien</option>
-                            @foreach ($pasien as $item)
-                            <option {{ ($laboratory->pasien_id == $item->id ? 'selected="selected"' : '') }} value="{{ $item->id }}">{{ $item->nama }}</option>
-                            @endforeach
-                          </select>
+                      <div class="col-md-12">
+                        <div class="form-floating">
+                        <select class="form-select" name="pasien_id" id="pasien_id">
+                          
+                          <option value="" selected>Pilih Pasien</option>
+                          @foreach ($pasien as $item)
+                          <option {{ ($laboratory->pasien_id == $item->id ? 'selected="selected"' : '') }} value="{{ $item->id }}">{{ $item->nama }}</option>
+                          @endforeach
+                        </select>
+                        <label for="pasien_id">Pasien</label>
                           @error('password') 
                           <span class="text-danger error">{{ $message }}</span>@enderror
+                        </div>
                       </div>
-                      <div class="form-group">
-                        <label for="exampleFormControlInput1">Tes</label>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="jenis_kelamin" value="{{ $laboratory->pasien->jenis_kelamin }}" readonly>
+                          <label for="jenis_kelamin">Jenis Kelamin</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="tanggal_lahir" value="{{ $laboratory->pasien->tanggal_lahir }}" readonly>
+                          <label for="tanggal_lahir">Tanggal Lahir</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="alamat" value="{{ $laboratory->pasien->alamat }}" readonly>
+                          <label for="alamat">Alamat</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="no_hp" value="{{ $laboratory->pasien->no_hp }}" readonly>
+                          <label for="no_hp">No Handphone</label>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-floating">
                         <select class="form-select" name="" id="option">
                           <option value="" selected>Pilih Tes</option>
                           @foreach ($jenis as $item)
                           <option {{ ($laboratory->diagnosa->id_jenis == $item->id ? 'selected="selected"' : '') }} value="{{ $item->id }}">{{ $item->nama }}</option>
                           @endforeach
                         </select>
+                        <label for="option">Tes</label>
+                        </div>
                       </div>
-                      <div class="mb-3">
-                        <label for="Diagnosa" class="form-label">Diagnosa</label>
+                      <div class="col-md-12">
+                        <div class="form-floating">
                         <select class="form-select" name="diagnosa_id" id="diagnosa" required>
                           <option value="">Select Plan</option>
                           @foreach($diagnosa as $diagnosa)
-                              @if($laboratory['diagnosa_id'] == $diagnosa->id)
-                                  <option value="{{ $diagnosa->id }}" selected>{{$diagnosa->nama}}</option>
-                              @else
-                                  <option value="{{ $diagnosa->id }}">{{$diagnosa->nama}}</option>
-                              @endif
+                          @if($laboratory['diagnosa_id'] == $diagnosa->id)
+                          <option value="{{ $diagnosa->id }}" selected>{{$diagnosa->nama}}</option>
+                          @else
+                          <option value="{{ $diagnosa->id }}">{{$diagnosa->nama}}</option>
+                          @endif
                           @endforeach
-                      </select>
+                        </select>
+                        <label for="diagnosa">Diagnosa</label>
+                        </div>
                     </div>
-                      <div class="form-group">
-                        <label for="exampleFormControlInput1">Tanggal</label>
-                        <input type="date" name="tanggal" id="tanggal" class="form-control" id="exampleFormControlInput1"
-                               value="{{ $laboratory->tanggal }}">
+                      <div class="col-md-12">
+                        <div class="form-floating">
+                        <input type="date" name="tanggal" id="tanggal" class="form-control" id="tanggal"
+                        value="{{ $laboratory->tanggal }}">
+                        <label for="tanggal">Tanggal</label>
+                        </div>
                         @error('tanggal') 
                         <span class="text-danger error">{{ $message }}</span>@enderror
                       </div>
                       
-                      <div class="form-group">
-                          <button class="btn btn-primary mt-3">Save</button>
+                      <div class="col-md-12">
+                        <div class="form-floating">
+                          <button class="btn btn-primary">Save</button>
+                    <a href="{{ route('laboratory.index') }}" class="btn btn-primary">Kembali</a>
+
                       </div>
 
                     </form>
@@ -129,5 +164,32 @@
       });
   
   </script>
+  <script>
+
+    $(document).ready(function(){
+
+        $("#pasien_id").change(function(){
+
+            var pasien = $(this).val();
+            
+            console.log(pasien);
+
+            $.ajax({
+                url:"/getpasien/"+pasien,
+                type:"GET",
+                success:function(data){
+                    var pasien = data.pasien;
+                    $('#jenis_kelamin').val(pasien['jenis_kelamin']);
+                    $('#tanggal_lahir').val(pasien['tanggal_lahir']);
+                    $('#alamat').val(pasien['alamat']);
+                    $('#no_hp').val(pasien['no_hp']);
+                }
+            });
+
+        });
+
+    });
+
+</script>
   </main><!-- End #main -->
 @endsection

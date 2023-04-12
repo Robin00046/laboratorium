@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Diagnosa;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PasienController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DiagnosaController;
 use App\Http\Controllers\JenisTesController;
 use App\Http\Controllers\LaboratoryController;
+use App\Models\Pasien;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +42,12 @@ Route::middleware('auth')->group(function () {
         $diagnosa = Diagnosa::where('id_jenis',$id)->get();
         // dd($diagnosa);
         return response()->json(['diagnosa'=>$diagnosa]);
+    });
+    Route::get('getpasien/{id}', function ($id) {
+        $pasien = Pasien::where('id',$id)->first();
+
+        // dd($pasien);
+        return response()->json(['pasien'=>$pasien]);
     });
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

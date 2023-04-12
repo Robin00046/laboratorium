@@ -25,28 +25,30 @@
 
                 <div class="card-body">
                   <h5 class="card-title">Edit Jenis</h5>
-                    <a href="{{ route('jenis.index') }}" class="btn btn-primary btn-sm mb-2">Kembali</a>
-                    <form method="POST" action="{{ route('jenis.update',$jenis->id) }}" >
+                    <form class="row g-3" method="POST" action="{{ route('jenis.update',$jenis->id) }}" >
                       @csrf
                       @method('PUT')
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Nama {{ $jenis->id }}</label>
-                            <input type="text" name="nama" id="nama" class="form-control"
-                                   id="exampleFormControlInput1" value="{{ old('nama',$jenis->nama) }}"
-                                   >
+                        <div class="col-md-12">
+                        <div class="form-floating">
+                          <input type="text" name="nama" id="nama" class="form-control" value="{{ old('nama',$jenis->nama) }}">
+                          <label for="nama">Nama {{ $jenis->id }}</label>
                             @error('nama') <span
                                 class="text-danger error">{{ $message }}</span>@enderror
+                          </div>
                         </div>
-                        <div class="form-group">
-                          <label for="exampleFormControlInput1">Keterangan</label>
-                          <input type="text" name="keterangan" id="keterangan" class="form-control"
-                                 id="exampleFormControlInput1" value="{{ old('keterangan',$jenis->keterangan) }}"
-                                 >
+                        <div class="col-md-12">
+                        <div class="form-floating">
+                          <input type="text" name="keterangan" id="keterangan" class="form-control" value="{{ old('keterangan',$jenis->keterangan) }}">
+                          <label for="keterangan">Keterangan</label>
                           @error('keterangan') <span
                               class="text-danger error">{{ $message }}</span>@enderror
+                        </div>
                       </div>
-                        <div class="form-group">
-                            <button class="btn btn-primary mt-3">Save</button>
+                        <div class="col-md-12">
+                        <div class="form-floating">
+                          <button class="btn btn-primary">Save</button>
+                          <a href="{{ route('jenis.index') }}" class="btn btn-primary">Kembali</a>
+                          </div>
                         </div>
   
                     </form>

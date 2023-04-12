@@ -35,36 +35,37 @@
                   <table class="table table-borderless datatable">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nomor Pendaftaran</th>
-                        <th scope="col">Nama Pasien</th>
-                        <th scope="col">Tes</th>
-                        <th scope="col">Tanggal</th>
-                        <th scope="col">Aksi</th>
+                        <th scope="col" class="text-center">#</th>
+                        <th scope="col" class="text-center">Nomor Pendaftaran</th>
+                        <th scope="col" class="text-center">Nama Pasien</th>
+                        <th scope="col" class="text-center">Tes</th>
+                        <th scope="col" class="text-center">Tanggal</th>
+                        <th scope="col" class="text-center">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
                         @forelse ($lab as $item)
                         <tr>
-                            <th scope="row"><a href="#">{{ $loop->iteration }}</a></th>
-                            <td>{{ $item->no_lab }}</td>
-                            <td>{{ $item->pasien }}</td>
-                            <td>{{ $item->diagnosa }}</td>
-                            <td>{{ $item->tanggal }}</td>
+                            <th scope="row" class="text-center"><a href="#">{{ $loop->iteration }}</a></th>
+                            <td class="text-center">{{ $item->no_lab }}</td>
+                            <td class="text-center">{{ $item->pasien }}</td>
+                            <td class="text-center">{{ $item->diagnosa }}</td>
+                            <td class="text-center">{{ $item->tanggal }}</td>
                             @role('Dokter')
-                            <td>
-                                <a href="{{ route('laboratory.edit',$item->id) }}"><span class="badge bg-warning">Edit</span></a>
-                                <form action="{{ route('laboratory.destroy',$item->id) }}" method="POST" onclick="return confirm('Are you sure?')">
+                            <td class="text-center">
+                                <a href="{{ route('laboratory.edit',$item->id) }}"><span class="btn btn-warning "><i class="bx bx-pencil"></i></span></a>
+                                <form class="d-inline" action="{{ route('laboratory.destroy',$item->id) }}" method="POST" onclick="return confirm('Are you sure?')">
                                     @method('DELETE')
                                     @csrf
-                                    <button class="badge bg-danger" >
-                                        Hapus
+                                    <button class="btn btn-danger border-0" >
+<i class="bx bxs-trash"></i>
+                                        
                                     </button>          
                                    </form>
                             </td>
                             @endrole
                             @role('Lab')
-                            <td>
+                            <td class="text-center">
                               <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modaledit{{ $item->id }}">
                                 Input Modal
                               </button>

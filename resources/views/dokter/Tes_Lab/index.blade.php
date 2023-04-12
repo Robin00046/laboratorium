@@ -33,27 +33,28 @@
                   <table class="table table-borderless datatable">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Aksi</th>
+                        <th scope="col" class="text-center">#</th>
+                        <th scope="col" class="text-center">Nama</th>
+                        <th scope="col" class="text-center">Email</th>
+                        <th scope="col" class="text-center">Role</th>
+                        <th scope="col" class="text-center">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
                         @forelse ($lab as $item)
                         <tr>
-                            <th scope="row"><a href="#">{{ $loop->iteration }}</a></th>
-                            <td>{{ $item->name }}</td>
-                            <td>{{ $item->email }}</td>
-                            <td>{{ $item->role }}</td>
-                            <td>
-                                <a href="{{ route('user.edit',$item->id) }}"><span class="badge bg-warning">Edit</span></a>
-                                <form action="{{ route('user.destroy',$item->id) }}" method="POST" onclick="return confirm('Are you sure?')">
+                            <th scope="row" class="text-center"><a href="#">{{ $loop->iteration }}</a></th>
+                            <td class="text-center">{{ $item->name }}</td>
+                            <td class="text-center">{{ $item->email }}</td>
+                            <td class="text-center">{{ $item->role }}</td>
+                            <td class="text-center">
+                                <a href="{{ route('user.edit',$item->id) }}"><span class="btn btn-warning "><i class="bx bx-pencil"></i></span></a>
+                                <form class="d-inline" action="{{ route('user.destroy',$item->id) }}" method="POST" onclick="return confirm('Are you sure?')">
                                     @method('DELETE')
                                     @csrf
-                                    <button class="badge bg-danger" >
-                                        Hapus
+                                    <button class="btn btn-danger border-0" >
+<i class="bx bxs-trash"></i>
+                                        
                                     </button>          
                                    </form>
                             </td>

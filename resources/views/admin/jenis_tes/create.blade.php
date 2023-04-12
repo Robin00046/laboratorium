@@ -25,27 +25,30 @@
 
                 <div class="card-body">
                   <h5 class="card-title">Tambah Jenis</h5>
-                    <a href="{{ route('jenis.index') }}" class="btn btn-primary btn-sm mb-2">Kembali</a>
-                    <form method="POST" action="{{ route('jenis.store') }}" >
+                    <form class="row g-3" method="POST" action="{{ route('jenis.store') }}" >
                       @csrf
-                      <div class="form-group">
-                        <label for="exampleFormControlInput1">Nama</label>
-                        <input type="text" name="nama" id="nama" class="form-control"
-                               id="exampleFormControlInput1" placeholder="Enter Nama" value="{{ old('nama') }}"
-                               >
+                      <div class="col-md-12">
+                        <div class="form-floating">
+                          <input type="text" name="nama" id="nama" class="form-control" placeholder="Enter Nama" value="{{ old('nama') }}">
+                          <label for="nama">Nama</label>
                         @error('nama') <span
                             class="text-danger error">{{ $message }}</span>@enderror
+                        </div>
                       </div>
-                      <div class="form-group">
-                        <label for="exampleFormControlInput1">Keterangan</label>
-                        <input type="text" name="keterangan" id="keterangan" class="form-control"
-                               id="exampleFormControlInput1" placeholder="Enter Keterangan" value="{{ old('keterangan') }}"
-                               >
+                      <div class="col-md-12">
+                        <div class="form-floating">
+                          <input type="text" name="keterangan" id="keterangan" class="form-control" placeholder="Enter Keterangan" value="{{ old('keterangan') }}">
+                          <label for="keterangan">Keterangan</label>
                         @error('keterangan') <span
                             class="text-danger error">{{ $message }}</span>@enderror
+                        </div>
                       </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary mt-3">Save</button>
+                    <div class="col-md-12">
+                      <div class="form-floating">
+                        <button class="btn btn-primary">Save</button>
+                        <a href="{{ route('jenis.index') }}" class="btn btn-primary">Kembali</a>
+
+                      </div>
                     </div>
 
                   </form>

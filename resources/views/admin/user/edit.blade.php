@@ -25,46 +25,53 @@
 
                 <div class="card-body">
                   <h5 class="card-title">Edit User</h5>
-                    <a href="{{ route('user.index') }}" class="btn btn-primary btn-sm mb-2">Kembali</a>
-                    <form method="POST" action="{{ route('user.update',$user->id) }}" >
+                    <form method="POST" class="row g-3" action="{{ route('user.update',$user->id) }}" >
                       @csrf
                       @method('PUT')
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Nama</label>
-                            <input type="text" name="name" id="name" class="form-control"
-                                   id="exampleFormControlInput1" value="{{ $user->name }}"
-                                   >
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                            <input type="text" name="name" id="name" class="form-control" value="{{ $user->name }}">
+                            <label for="name">Nama</label>
                             @error('name') <span
                                 class="text-danger error">{{ $message }}</span>@enderror
+                          </div>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Email</label>
-                            <input type="text" name="email" id="email" class="form-control" id="exampleFormControlInput1"
-                                  value="{{ $user->email }}">
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                            <input type="text" name="email" id="email" class="form-control" value="{{ $user->email }}">
+                            <label for="email">Email</label>
                             @error('email') 
                             <span class="text-danger error">{{ $message }}</span>@enderror
+                          </div>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Password</label>
-                            <input type="password" name="password" id="password" class="form-control" id="exampleFormControlInput1"
-                                   placeholder="Enter Password" >
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password" >
+                            <label for="password">Password</label>
                             @error('password') 
                             <span class="text-danger error">{{ $message }}</span>@enderror
+                          </div>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Role</label>
-                              <select class="form-select" name="role" id="role">
-                                @foreach ($roles as $item)
-                                <option {{ ($user->role_id == $item->id ? 'selected="selected"' : '') }} value="{{ $item->name }}">{{ $item->name }}</option>
-                                @endforeach
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                            <select class="form-select" name="role" id="role">
+                              @foreach ($roles as $item)
+                              <option {{ ($user->role_id == $item->id ? 'selected="selected"' : '') }} value="{{ $item->name }}">{{ $item->name }}</option>
+                              @endforeach
                             </select>
+                            <label for="role">Role</label>
                             @error('role') 
                             <span class="text-danger error">{{ $message }}</span>@enderror
+                          </div>
                         </div>
                         
                         
-                        <div class="form-group">
-                            <button class="btn btn-primary mt-3">Save</button>
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                            <button class="btn btn-primary">Save</button>
+                            <a href="{{ route('user.index') }}" class="btn btn-primary">Kembali</a>
+
+                          </div>
                         </div>
   
                     </form>

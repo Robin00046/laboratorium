@@ -25,41 +25,50 @@
 
                 <div class="card-body">
                   <h5 class="card-title">Tambah Diagnosa</h5>
-                    <a href="{{ route('diagnosa.index') }}" class="btn btn-primary btn-sm mb-2">Kembali</a>
-                    <form method="POST" action="{{ route('diagnosa.store') }}" >
+                    <form class="row g-3" method="POST" action="{{ route('diagnosa.store') }}" >
                       @csrf
-                      <div class="form-group">
-                        <label for="exampleFormControlInput1">Jenis</label>
+                      <div class="col-md-12">
+                        <div class="form-floating">
                           <select class="form-select" name="id_jenis" id="id_jenis">
                             <option value="" selected>Pilih Jenis</option>
                             @foreach ($jenis as $item)
-                                @if ($item->id == old('id_jenis'))
-                                    <option value="{{ $item->id }}" selected>{{ $item->nama }}</option>
-                                @else
-                                <option value="{{ $item->id }}">{{ $item->nama }}</option>
-                                @endif
+                            @if ($item->id == old('id_jenis'))
+                            <option value="{{ $item->id }}" selected>{{ $item->nama }}</option>
+                            @else
+                            <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                            @endif
                             @endforeach
-                        </select>
+                          </select>
+                          <label for="id_jenis">Jenis</label>
                         @error('id_jenis') 
                         <span class="text-danger error">{{ $message }}</span>@enderror
+                        </div>
                       </div>
-                      <div class="form-group">
-                        <label for="exampleFormControlInput1">Nama</label>
-                        <input type="text" name="nama" id="nama" class="form-control"
-                               id="exampleFormControlInput1" placeholder="Enter Nama" value="{{ old('nama') }}" >
-                        @error('nama') <span
+                      <div class="col-md-12">
+                        <div class="form-floating">
+                          <input type="text" name="nama" id="nama" class="form-control"
+                          placeholder="Enter Nama" value="{{ old('nama') }}" >
+                          <label for="nama">Nama</label>
+                          @error('nama') <span
                             class="text-danger error">{{ $message }}</span>@enderror
+                        </div>
                       </div>
-                      <div class="form-group">
-                        <label for="exampleFormControlInput1">keterangan</label>
-                        <input type="text" name="keterangan" id="keterangan" class="form-control"
-                               id="exampleFormControlInput1" placeholder="Enter keterangan" value="{{ old('keterangan') }}"
-                               >
+                      <div class="col-md-12">
+                        <div class="form-floating">
+                          <input type="text" name="keterangan" id="keterangan" class="form-control"
+                          placeholder="Enter keterangan" value="{{ old('keterangan') }}"
+                          >
+                          <label for="keterangan">keterangan</label>
                         @error('keterangan') <span
                             class="text-danger error">{{ $message }}</span>@enderror
+                        </div>
                       </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary mt-3">Save</button>
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                        <button class="btn btn-primary">Save</button>
+                        <a href="{{ route('diagnosa.index') }}" class="btn btn-primary">Kembali</a>
+
+                      </div>
                     </div>
 
                   </form>

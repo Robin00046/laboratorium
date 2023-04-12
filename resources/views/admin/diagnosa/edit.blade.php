@@ -25,38 +25,44 @@
 
                 <div class="card-body">
                   <h5 class="card-title">Edit Diagnosa</h5>
-                    <a href="{{ route('diagnosa.index') }}" class="btn btn-primary btn-sm mb-2">Kembali</a>
-                    <form method="POST" action="{{ route('diagnosa.update',$diagnosa->id) }}" >
+                    <form class="row g-3" method="POST" action="{{ route('diagnosa.update',$diagnosa->id) }}" >
                       @csrf
                       @method('PUT')
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Nama</label>
-                            <input type="text" name="nama" id="nama" class="form-control"
-                                   id="exampleFormControlInput1" value="{{ $diagnosa->nama }}"
-                                   >
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                            <input type="text" name="nama" id="nama" class="form-control" value="{{ $diagnosa->nama }}"
+                            >
+                            <label for="nama">Nama</label>
                             @error('nama') <span
-                                class="text-danger error">{{ $message }}</span>@enderror
+                            class="text-danger error">{{ $message }}</span>@enderror
+                          </div>
                         </div>
-                        <div class="form-group">
-                          <label for="exampleFormControlInput1">Jenis</label>
+                        <div class="col-md-12">
+                          <div class="form-floating">
                             <select class="form-select" name="id_jenis" id="id_jenis">
                               @foreach ($jenis as $item)
                               <option {{ ($diagnosa->id_jenis == $item->id ? 'selected="selected"' : '') }} value="{{ $item->id }}">{{ $item->nama }}</option>
                               @endforeach
-                          </select>
+                            </select>
+                            <label for="id_jenis">Jenis</label>
                           @error('id_jenis') 
                           <span class="text-danger error">{{ $message }}</span>@enderror
+                          </div>
                         </div>
-                        <div class="form-group">
-                          <label for="exampleFormControlInput1">Keterangan</label>
-                          <input type="text" name="keterangan" id="keterangan" class="form-control"
-                                 id="exampleFormControlInput1" value="{{ $diagnosa->keterangan }}"
-                                 >
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                            <input type="text" name="keterangan" id="keterangan" class="form-control" value="{{ $diagnosa->keterangan }}"
+                            >
+                            <label for="keterangan">Keterangan</label>
                           @error('keterangan') <span
                               class="text-danger error">{{ $message }}</span>@enderror
+                        </div>
                       </div>
-                        <div class="form-group">
-                            <button class="btn btn-primary mt-3">Save</button>
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                          <button class="btn btn-primary">Save</button>
+                          <a href="{{ route('diagnosa.index') }}" class="btn btn-primary">Kembali</a>
+                          </div>
                         </div>
   
                     </form>

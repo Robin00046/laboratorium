@@ -33,28 +33,29 @@
                   <table class="table table-borderless datatable">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nama Jenis</th>
-                        <th scope="col">Nama</th>
+                        <th scope="col" class="text-center">#</th>
+                        <th scope="col" class="text-center">Nama Jenis</th>
+                        <th scope="col" class="text-center">Nama</th>
                         @hasrole('Admin')
-                        <th scope="col">Aksi</th>
+                        <th scope="col" class="text-center">Aksi</th>
                         @endhasrole
                       </tr>
                     </thead>
                     <tbody>
                         @forelse ($diagnosa as $item)
                             <tr>
-                        <th scope="row"><a href="#">{{ $loop->iteration }}</a></th>
-                        <td>{{ $item->nama_jenis }}</td>
-                        <td>{{ $item->nama }}</td>
+                        <th scope="row" class="text-center"><a href="#">{{ $loop->iteration }}</a></th>
+                        <td class="text-center">{{ $item->nama_jenis }}</td>
+                        <td class="text-center">{{ $item->nama }}</td>
                         @hasrole('Admin')
-                        <td>
-                            <a href="{{ route('diagnosa.edit',$item->id) }}"><span class="badge bg-warning">Edit</span></a>
-                            <form action="{{ route('diagnosa.destroy',$item->id) }}" method="POST" onclick="return confirm('Are you sure?')">
+                        <td class="text-center">
+                            <a href="{{ route('diagnosa.edit',$item->id) }}"><span class="btn btn-warning "><i class="bx bx-pencil"></i></span></a>
+                            <form class="d-inline" action="{{ route('diagnosa.destroy',$item->id) }}" method="POST" onclick="return confirm('Are you sure?')">
                                 @method('DELETE')
                                 @csrf
-                                <button class="badge bg-danger" >
-                                    Hapus
+                                <button class="btn btn-danger border-0" >
+<i class="bx bxs-trash"></i>
+                                    
                                 </button>          
                                </form>
                         </td>

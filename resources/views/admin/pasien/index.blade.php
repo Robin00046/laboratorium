@@ -33,36 +33,37 @@
                   <table class="table table-borderless datatable">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Jenis Kelamin</th>
-                        <th scope="col">Tanggal Lahir</th>
-                        <th scope="col">Alamat</th>
-                        <th scope="col">No HP</th>
-                        <th scope="col">Dokter</th>
+                        <th scope="col" class="text-center">#</th>
+                        <th scope="col" class="text-center">Nama</th>
+                        <th scope="col" class="text-center">Jenis Kelamin</th>
+                        <th scope="col" class="text-center">Tanggal Lahir</th>
+                        <th scope="col" class="text-center">Alamat</th>
+                        <th scope="col" class="text-center">No HP</th>
+                        <th scope="col" class="text-center">Dokter</th>
                         @hasrole('Admin')
-                        <th scope="col">Aksi</th>
+                        <th scope="col" class="text-center">Aksi</th>
                         @endhasrole
                       </tr>
                     </thead>
                     <tbody>
                         @forelse ($pasien as $item)
                             <tr>
-                        <th scope="row"><a href="#">{{ $loop->iteration }}</a></th>
-                        <td>{{ $item->nama }}</td>
-                        <td>{{ $item->jenis_kelamin }}</td>
-                        <td>{{ $item->tanggal_lahir }}</td>
-                        <td>{{ $item->alamat }}</td>
-                        <td>{{ $item->no_hp }}</td>
-                        <td>{{ $item->dokter }}</td>
+                        <th scope="row" class="text-center"><a href="#">{{ $loop->iteration }}</a></th>
+                        <td class="text-center">{{ $item->nama }}</td>
+                        <td class="text-center">{{ $item->jenis_kelamin }}</td>
+                        <td class="text-center">{{ $item->tanggal_lahir }}</td>
+                        <td class="text-center">{{ $item->alamat }}</td>
+                        <td class="text-center">{{ $item->no_hp }}</td>
+                        <td class="text-center">{{ $item->dokter }}</td>
                         @hasrole('Admin')
-                        <td>
-                            <a href="{{ route('pasien.edit',$item->id) }}"><span class="badge bg-warning">Edit</span></a>
-                            <form action="{{ route('pasien.destroy',$item->id) }}" method="POST" onclick="return confirm('Are you sure?')">
+                        <td class="text-center">
+                            <a href="{{ route('pasien.edit',$item->id) }}"><span class="btn btn-warning "><i class="bx bx-pencil"></i></span></a>
+                            <form class="d-inline" action="{{ route('pasien.destroy',$item->id) }}" method="POST" onclick="return confirm('Are you sure?')">
                                 @method('DELETE')
                                 @csrf
-                                <button class="badge bg-danger" >
-                                    Hapus
+                                <button class="btn btn-danger border-0" >
+<i class="bx bxs-trash"></i>
+                                    
                                 </button>          
                                </form>
                         </td>
