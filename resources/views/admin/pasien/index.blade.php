@@ -29,7 +29,9 @@
 
                 <div class="card-body">
                   <h5 class="card-title">Data Pasien </h5>
+                  @hasrole('Admin')
                     <a href="{{ route('pasien.create') }}" class="btn btn-primary btn-sm mb-2">Tambah Pasien</a>
+                    @endhasrole
                   <table class="table table-borderless datatable">
                     <thead>
                       <tr>

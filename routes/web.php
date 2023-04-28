@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard;
 use App\Models\Diagnosa;
 
 use Illuminate\Support\Facades\Route;
@@ -26,11 +27,12 @@ use App\Models\Pasien;
 //     return view('welcome');
 // });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard_admin', [Dashboard::class, 'admin'])->name('dashboard_admin')->middleware('role:Admin');
+    Route::get('/dashboard_dokter', [Dashboard::class, 'dokter'])->name('dashboard_dokter')->middleware('role:Dokter');
+    Route::get('/dashboard_lab', [Dashboard::class, 'lab'])->name('dashboard_lab')->middleware('role:Lab');
     Route::resource('user', UserController::class)->name('user', 'users')->except(['show'])->middleware('role:Admin');
     Route::resource('pasien', PasienController::class)->name('pasien', 'pasiens')->except(['show']);
     Route::resource('laboratory', LaboratoryController::class)->name('laboratory', 'laboratories')->except(['show']);

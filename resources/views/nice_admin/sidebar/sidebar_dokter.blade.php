@@ -4,7 +4,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link {{ Request::is('dashboard') ? '' :'collapsed' }}"  href="{{ route('dashboard') }}">
+        <a class="nav-link {{ Request::is('dashboard_dokter') ? '' :'collapsed' }}"  href="{{ route('dashboard_dokter') }}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -25,7 +25,7 @@
       </li><!-- End Profile Page Nav -->
       <li class="nav-item">
         {{-- <a class="nav-link"  href="#"> --}}
-        <a class="nav-link {{ Request::is('laboratory.hasil') ? '' :'collapsed' }}"  href="{{ route('laboratory.hasil') }}">
+        <a class="nav-link {{ Request::is('hasil') ? '' :'collapsed' }}"  href="{{ route('laboratory.hasil') }}">
           <i class="bi bi-person"></i>
           <span>Hasil</span>
         </a>

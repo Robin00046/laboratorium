@@ -67,7 +67,7 @@
                             @role('Lab')
                             <td class="text-center">
                               <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modaledit{{ $item->id }}">
-                                Input Modal
+                                Input Hasil
                               </button>
                           </td>
                             @endrole
@@ -102,7 +102,7 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">Basic Modal</h5>
+                <h5 class="modal-title">Input Hasil</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">

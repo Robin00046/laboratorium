@@ -26,8 +26,9 @@ class LaboratoryController extends Controller
         ->join('diagnosas', 'diagnosas.id', '=', 'laboratories.diagnosa_id')
         ->select('laboratories.*', 'pasiens.nama as pasien', 'diagnosas.nama as diagnosa')
         ->where('status', '=', 1)
-        ->where('user_id', '=', Auth::user()->id)
+        ->where('dokter_id', '=', Auth::user()->id)
         ->get();
+        // dd($lab);
         } elseif (auth()->user()->hasRole('Lab')) {
             $lab = Laboratory::join('pasiens', 'pasiens.id', '=', 'laboratories.pasien_id')
         ->join('diagnosas', 'diagnosas.id', '=', 'laboratories.diagnosa_id')
@@ -45,7 +46,13 @@ class LaboratoryController extends Controller
      */
     public function create()
     {
-        $tes = Laboratory::orderby('id', 'desc')->first()->id;
+        if (Laboratory::orderby('id', 'desc')->first() == null) {
+            $tes = 0;
+        }
+        else
+        {
+            $tes = Laboratory::orderby('id', 'desc')->first()->id;
+        }
         
         // dd($tes,1));
         $table_no = $tes; // nantinya menggunakan database dan table sungguhan
