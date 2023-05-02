@@ -17,22 +17,18 @@ class JenisTesSeeder extends Seeder
         Jenis_Tes::create([
             'id' => 1,
             'nama' => 'Hematologi',
-            'keterangan' => 'Keterangan 1',
         ]);
         Jenis_Tes::create([
             'id' => 2,
            'nama' => 'Glukosa',
-              'keterangan' => 'Keterangan 2',
         ]);
         Jenis_Tes::create([
             'id' => 3,
             'nama' => 'Elektrolit & Gas Darah',
-            'keterangan' => 'Keterangan 3',
         ]);
         Jenis_Tes::create([
             'id' => 4,
             'nama' => 'Faal Jantung',
-            'keterangan' => 'Keterangan 4',
         ]);
 
     }

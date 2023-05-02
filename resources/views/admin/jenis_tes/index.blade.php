@@ -3,11 +3,11 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Daftar Jenis</h1>
+      <h1>Daftar Jenis Pemeriksaan</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Daftar Jenis</li>
+          <li class="breadcrumb-item active">Daftar Jenis Pemeriksaan</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -28,8 +28,8 @@
               <div class="card recent-sales overflow-auto">
 
                 <div class="card-body">
-                  <h5 class="card-title">Data Jenis </h5>
-                    <a href="{{ route('jenis.create') }}" class="btn btn-primary btn-sm mb-2">Tambah jenis</a>
+                  <h5 class="card-title">Data Jenis Pemeriksaan </h5>
+                    <a href="{{ route('jenis.create') }}" class="btn btn-primary btn-sm mb-2">Tambah Jenis Pemeriksaan</a>
                   <table class="table table-borderless datatable">
                     <thead>
                       <tr>

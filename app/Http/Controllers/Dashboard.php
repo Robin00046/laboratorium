@@ -44,6 +44,7 @@ class Dashboard extends Controller
             ->count();
         $daftar = Laboratory::where('status', 1)->count();
         $selesai = Laboratory::where('status', 2)->count();
-        return view('nice_admin.dashboard.dashboard_lab', compact('pasien', 'daftar', 'selesai'));
+        $pendapatan = Laboratory::selectRaw('sum(harga) as total, year(tanggal) year, monthname(tanggal) month')->join('diagnosas', 'diagnosas.id', '=', 'laboratories.diagnosa_id')->groupBy('year', 'month')->orderBy('year', 'desc')->where('status', 2)->first();
+        return view('nice_admin.dashboard.dashboard_lab', compact('pasien', 'daftar', 'selesai', 'pendapatan'));
     }
 }

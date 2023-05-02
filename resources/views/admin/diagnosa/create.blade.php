@@ -3,12 +3,12 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Tambah Data Diagnosa</h1>
+      <h1>Tambah Data Pemeriksaan</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Data Diagnosa</li>
-          <li class="breadcrumb-item active">Tambah Data Diagnosa</li>
+          <li class="breadcrumb-item active">Data Pemeriksaan</li>
+          <li class="breadcrumb-item active">Tambah Data Pemeriksaan</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -24,7 +24,7 @@
               <div class="card recent-sales overflow-auto">
 
                 <div class="card-body">
-                  <h5 class="card-title">Tambah Diagnosa</h5>
+                  <h5 class="card-title">Tambah Pemeriksaan</h5>
                     <form class="row g-3" method="POST" action="{{ route('diagnosa.store') }}" >
                       @csrf
                       <div class="col-md-12">
@@ -55,11 +55,11 @@
                       </div>
                       <div class="col-md-12">
                         <div class="form-floating">
-                          <input type="text" name="keterangan" id="keterangan" class="form-control"
-                          placeholder="Enter keterangan" value="{{ old('keterangan') }}"
+                          <input type="number" name="harga" id="harga" class="form-control"
+                          placeholder="Enter harga" value="{{ old('harga') }}"
                           >
-                          <label for="keterangan">keterangan</label>
-                        @error('keterangan') <span
+                          <label for="harga">Harga</label>
+                        @error('harga') <span
                             class="text-danger error">{{ $message }}</span>@enderror
                         </div>
                       </div>

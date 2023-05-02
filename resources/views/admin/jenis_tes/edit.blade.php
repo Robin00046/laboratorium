@@ -3,12 +3,12 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Edit Data Jenis</h1>
+      <h1>Edit Data Jenis Pemeriksaan</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Jenis</li>
-          <li class="breadcrumb-item active">Edit Data Jenis</li>
+          <li class="breadcrumb-item active">Jenis Pemeriksaan</li>
+          <li class="breadcrumb-item active">Edit Data Jenis Pemeriksaan</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -24,7 +24,7 @@
               <div class="card recent-sales overflow-auto">
 
                 <div class="card-body">
-                  <h5 class="card-title">Edit Jenis</h5>
+                  <h5 class="card-title">Edit Jenis Pemeriksaan</h5>
                     <form class="row g-3" method="POST" action="{{ route('jenis.update',$jenis->id) }}" >
                       @csrf
                       @method('PUT')
@@ -36,14 +36,6 @@
                                 class="text-danger error">{{ $message }}</span>@enderror
                           </div>
                         </div>
-                        <div class="col-md-12">
-                        <div class="form-floating">
-                          <input type="text" name="keterangan" id="keterangan" class="form-control" value="{{ old('keterangan',$jenis->keterangan) }}">
-                          <label for="keterangan">Keterangan</label>
-                          @error('keterangan') <span
-                              class="text-danger error">{{ $message }}</span>@enderror
-                        </div>
-                      </div>
                         <div class="col-md-12">
                         <div class="form-floating">
                           <button class="btn btn-primary">Save</button>

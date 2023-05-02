@@ -27,14 +27,14 @@
         <a class="nav-link {{ Request::is('jenis') ? '' :'collapsed' }}" href="{{ route('jenis.index') }}">
         {{-- <a class="nav-link" href="#"> --}}
           <i class="bi bi-person"></i>
-          <span>Data Jenis</span>
+          <span>Data Jenis Pemeriksaan</span>
         </a>
       </li><!-- End Profile Page Nav -->
       <li class="nav-item">
         <a class="nav-link {{ Request::is('diagnosa') ? '' :'collapsed' }}" href="{{ route('diagnosa.index') }}">
         {{-- <a class="nav-link" href="#"> --}}
           <i class="bi bi-person"></i>
-          <span>Data Diagnosa</span>
+          <span>Data Pemeriksaan</span>
         </a>
       </li><!-- End Profile Page Nav -->
 

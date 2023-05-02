@@ -15,23 +15,23 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create( [
-            'name' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
+            'name' => 'Admin',
+            'email' => 'Admin@gmail.com',
             'password' => Hash::make('password'),
             ] )->assignRole('Admin');
         User::create( [
             'name' => 'Dokter Tirta',
-            'email' => Str::random(10).'@gmail.com',
+            'email' => 'tirta@gmail.com',
             'password' => Hash::make('password'),
             ] )->assignRole('Dokter');
         User::create( [
-            'name' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
+            'name' => 'Analis Laboratory',
+            'email' => 'lab@gmail.com',
             'password' => Hash::make('password'),
             ] )->assignRole('Lab');
         User::create( [
             'name' => 'Dokter Manusia',
-            'email' => Str::random(10).'@gmail.com',
+            'email' => 'doktermanusia@gmail.com',
             'password' => Hash::make('password'),
             ] )->assignRole('Dokter');
     }

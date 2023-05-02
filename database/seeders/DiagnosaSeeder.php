@@ -17,42 +17,43 @@ class DiagnosaSeeder extends Seeder
         Diagnosa::create([
             'id_jenis' => 1,
             'nama' => 'Darah Lengkap',
-            'keterangan' => 'Keterangan 1',
+            'harga' => 50000,
+            
         ]);
         Diagnosa::create([
             'id_jenis' => 1,
             'nama' => 'KED/LED',
-            'keterangan' => 'Keterangan 2',
+            'harga' => 88000,
         ]);
         Diagnosa::create([
             'id_jenis' => 2,
             'nama' => 'Gula Darah Puasa',
-            'keterangan' => 'Keterangan 2',
+            'harga' => 76000,
         ]);
         Diagnosa::create([
             'id_jenis' => 2,
             'nama' => 'Gula Darah 2 Jam PP',
-            'keterangan' => 'Keterangan 2',
+            'harga' => 15000,
         ]);
         Diagnosa::create([
             'id_jenis' => 3,
             'nama' => 'Calcium',
-            'keterangan' => 'Keterangan 3',
+            'harga' => 32000,
         ]);
         Diagnosa::create([
             'id_jenis' => 3,
             'nama' => 'Magnesium',
-            'keterangan' => 'Keterangan 3',
+            'harga' => 23000,
         ]);
         Diagnosa::create([
             'id_jenis' => 4,
             'nama' => 'LBH',
-            'keterangan' => 'Keterangan 4',
+            'harga' => 30000,
         ]);
         Diagnosa::create([
             'id_jenis' => 4,
             'nama' => 'CPKs',
-            'keterangan' => 'Keterangan 4',
+            'harga' => 45000,
         ]);
     }
 }

@@ -25,7 +25,7 @@ class StoreDiagnosaRequest extends FormRequest
             //
             'nama' => 'required',
             'id_jenis' => 'required',
-            'keterangan' => 'required',
+            'harga' => 'required'
         ];
     }
 }

@@ -19,7 +19,7 @@
     <div class="card">
       <div class="card-body">
         <h3 class="text-center mt-3">
-          Selamat datang di halaman Laboratorium
+          Selamat Datang di Halaman Laboratorium
         </h3>
       </div>
     </div>
@@ -83,6 +83,28 @@
               </div>
               <div class="ps-3">
                 <h6>{{ $selesai }}</h6>
+              </div>
+            </div>
+
+          </a>
+          </div>
+        </div>
+
+      </div><!-- End Customers Card -->
+      <!-- Customers Card -->
+      <div class="col-xxl-4 col-xl-12">
+
+        <div class="card info-card revenue-card">
+          <a href="{{ route('laboratory.hasil') }}">
+          <div class="card-body">
+            <h5 class="card-title">Jumlah Pendapatan Bulan {{ $pendapatan->month }} Tahun {{ $pendapatan->year }}</h5>
+
+            <div class="d-flex align-items-center">
+              <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                <i class="bi bi-cash-coin"></i>
+              </div>
+              <div class="ps-3">
+                <h6>Rp. {{ number_format($pendapatan->total,0) }}</h6>
               </div>
             </div>
 

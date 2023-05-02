@@ -25,7 +25,7 @@ class UpdateDiagnosaRequest extends FormRequest
             //
             'nama' => 'required',
             'id_jenis' => 'required',
-            'keterangan' => 'required',
+            'harga' => 'required'
         ];
     }
 }

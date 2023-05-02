@@ -24,7 +24,6 @@ class StoreJenis_TesRequest extends FormRequest
         return [
             //
             'nama' => 'required',
-            'keterangan' => 'required',
         ];
     }
 }
