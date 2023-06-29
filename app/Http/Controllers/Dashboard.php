@@ -44,7 +44,14 @@ class Dashboard extends Controller
             ->count();
         $daftar = Laboratory::where('status', 1)->count();
         $selesai = Laboratory::where('status', 2)->count();
-        $pendapatan = Laboratory::selectRaw('sum(harga) as total, year(tanggal) year, monthname(tanggal) month')->join('diagnosas', 'diagnosas.id', '=', 'laboratories.diagnosa_id')->groupBy('year', 'month')->orderBy('year', 'desc')->where('status', 2)->first();
+        if (Laboratory::where('status', 2)->count() == 0) {
+            // $now = Carbon::now();
+            $pendapatan = (object) array('total' => 0, 'year' => now()->year, 'month' => now()->format('F'));
+        } else {
+            $pendapatan = Laboratory::selectRaw('sum(harga) as total, year(tanggal) as year, monthname(tanggal) as month,month(tanggal) as months')->join('diagnosas', 'diagnosas.id', '=', 'laboratories.diagnosa_id')->groupBy('year', 'month','months')->orderBy('year', 'desc')->orderBy('months', 'desc')->where('status', 2)->first();
+            
+        }
+        // dd($pendapatan);
         return view('nice_admin.dashboard.dashboard_lab', compact('pasien', 'daftar', 'selesai', 'pendapatan'));
     }
 }
